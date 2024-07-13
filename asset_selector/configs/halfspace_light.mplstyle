@@ -1,0 +1,50 @@
+#Author: Cameron Davidson-Pilon, original styles from Bayesian Methods for Hackers
+# https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/
+#https://github.com/matplotlib/matplotlib/blob/v3.4.2/matplotlibrc.template
+
+lines.linewidth: 1.0
+patch.linewidth: 0.5
+patch.facecolor: blue
+patch.edgecolor: eeeeee
+patch.antialiased: True
+text.hinting_factor: 8
+mathtext.fontset: cm
+
+### AXES
+axes.facecolor: eeeeee
+axes.edgecolor: bcbcbc
+axes.titlesize: x-large
+axes.labelsize: large
+axes.labelcolor: 00165E
+axes.prop_cycle: cycler('color', ['00165E', '455BE1', 'EB2F2F', '939AA7', '69D3CD', 'EAAB00'])
+axes.grid: False
+
+### Figure
+figure.titlesize: large   # size of the figure title (``Figure.suptitle()``)
+figure.titleweight: normal  # weight of the figure title
+figure.figsize: 12, 4  # figure size in inches
+figure.dpi: 100    # figure dots per inch
+figure.facecolor: F2F2F2 # bg color outside axes
+
+### LEGEND
+legend.fontsize: 12 #Font size for legends
+legend.fancybox: True # if True, use a rounded box for the legend background, else a rectangle
+#legend.labelcolor: None
+
+### FONTS
+font.family: sans-serif
+font.sans-serif: Inter
+font.weight: regular
+font.size: 12
+text.color: 22203B
+
+### TICKS
+xtick.direction: in
+ytick.direction: in
+xtick.color: 22203B
+ytick.color: 22203B
+
+### Save fig
+savefig.dpi: 600
+savefig.transparent: True
+savefig.bbox: tight

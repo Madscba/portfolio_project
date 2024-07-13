@@ -1,0 +1,24 @@
+FROM continuumio/miniconda3:4.9.2
+
+# Installing requirements
+ADD docker/requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
+
+# creating user and using its home folder as app folder
+RUN useradd -m -d /app usr
+WORKDIR /app
+
+ENV PYTHONPATH /app
+
+COPY . .
+
+# Changing ownership of the app files to user
+RUN chown -R usr:usr /app
+
+# use user
+USER usr
+
+# Expose port
+EXPOSE 8080
+
+ENTRYPOINT python .

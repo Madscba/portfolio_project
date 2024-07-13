@@ -1,0 +1,92 @@
+# pyproject.toml
+
+[tool.poetry]
+name = "portfolio_project"
+version = "0.0.1"
+description = "Project to select ETF's and stocks based on their expected historical return and risk represented by previous volatility"
+authors = ["Mads C. B. Andersen <madscba@gmail.com>"]
+packages = [
+  {include = "asset_selector" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^1.26.4"
+ruff = "^0.3.2"
+pydantic = "^2.6.3"
+pandas = "^2.2.1"
+pre-commit = "^3.6.2"
+pytest = "^8.1.1"
+seaborn = "^0.13.2"
+colorlog = "^6.8.2"
+requests = "^2.31.0"
+scrapy = "^2.11.2"
+
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.8"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff] #"ruff linter" to get compatible linters
+#Pycodestyle: python style guide checker ('E'),
+#Pydocstyle: python docstring compliance ('D'),
+#Pyflakes:  checks Python source files for errors. ('F')
+#isort: sorts imports according to guidelines. ('I')
+select = ["E", 'D', "F", "I"]
+ignore = [ "D401" ] #Add which rules to ignore ex. add "E701" to list.
+
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["A", "B", "C", "D", "E", "F", "G", "I", "N", "Q", "S", "T", "W", "ANN", "ARG", "BLE", "COM", "DJ", "DTZ", "EM", "ERA", "EXE", "FBT", "ICN", "INP", "ISC", "NPY", "PD", "PGH", "PIE", "PL", "PT", "PTH", "PYI", "RET", "RSE", "RUF", "SIM", "SLF", "TCH", "TID", "TRY", "UP", "YTT"]
+unfixable = []
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+per-file-ignores = {}
+
+# Same as Black.
+line-length = 88
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+# Assume Python 3.10.
+target-version = "py310"
+
+[tool.ruff.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 10
+
+[tool.ruff.pydocstyle]
+# Use pep257-style docstrings.
+convention = "pep257"
+
+
+[tool.ruff.isort] #https://beta.ruff.rs/docs/settings/#isort for settings on isort
+force-single-line = true
+
+[tool.ruff.format]
+quote-style="preserve"

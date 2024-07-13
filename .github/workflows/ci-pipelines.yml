@@ -1,0 +1,34 @@
+# This workflow will install poetry dependencies & run tests
+
+name: Python package
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:  # This trigger allows manual workflow runs
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up ${matrix.python-version}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${matrix.python-version}
+    - name: Install poetry dependencies
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+        export PATH=$PATH:$HOME/.poetry/bin
+        poetry install --no-root
+    - name: Test with pytest
+      run: |
+        poetry run pytest tests
