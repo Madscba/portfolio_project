@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from web_scraper.web_crawler.configs.directories import Directories
+from asset_selector.configs.directories import Directories
 
 
 @dataclass
@@ -8,6 +8,7 @@ class BronzeData:
     """Dataclass containing bronze tables."""
 
     bronze_path = Directories.DATA_PATH / "bronze"
+    positiv_liste = bronze_path / 'skats_positivliste_xml'
 
 
 @dataclass

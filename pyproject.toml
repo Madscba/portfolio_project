@@ -23,6 +23,7 @@ requests = "^2.31.0"
 scrapy = "^2.11.2"
 bs4 = "^0.0.2"
 scrapy-selenium = "^0.0.7"
+openpyxl = "^3.1.5"
 
 
 [tool.poetry.dev-dependencies]
