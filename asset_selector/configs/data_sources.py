@@ -1,3 +1,5 @@
+"""Test file."""
+
 from dataclasses import dataclass
 
 from asset_selector.configs.directories import Directories
@@ -9,6 +11,10 @@ class BronzeData:
 
     bronze_path = Directories.DATA_PATH / "bronze"
     positiv_liste = bronze_path / 'skats_positivliste_xml'
+
+    # files
+    ticker_dict = bronze_path / "isin_to_ticker_dictionary.pkl"
+    ticker_not_avail = bronze_path / "tickers_not_available_yfinance.pkl"
 
 
 @dataclass

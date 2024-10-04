@@ -43,3 +43,4 @@ venv
 
 # mlflow experiment logs
 /mlruns
+/asset_selector/.env

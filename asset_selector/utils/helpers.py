@@ -1,4 +1,5 @@
 """Script containing helper functions."""
+
 import datetime
 import functools
 import logging
@@ -9,8 +10,10 @@ from pathlib import Path
 
 import colorlog
 import pandas as pd
+import requests
 
 from asset_selector.configs.directories import Directories
+from asset_selector.configs.static import X_OPENFIGI_APIKEY
 
 
 def init_logger(
@@ -166,3 +169,41 @@ def make_column_names_lower_case_and_no_spaces(df_or_list_or_str):
 
     elif isinstance(df_or_list_or_str, str):
         return clean_string(df_or_list_or_str)
+
+
+def get_ticker_symbol_from_isin(isin: str) -> str:
+    """Add documenatation here."""
+    ticker = get_ticker_symbol_using_OpenFIGI(isin)
+    return ticker
+
+
+def get_ticker_symbol_using_OpenFIGI(isin: str) -> str:
+    """Add documenatation here."""
+    # OpenFIGI API endpoint
+    url = "https://api.openfigi.com/v3/mapping"
+    ticker = False
+
+    # Payload for the request
+    payload = [{"idType": "ID_ISIN", "idValue": isin}]
+
+    headers = {
+        'Content-Type': 'application/json',
+        'X-OPENFIGI-APIKEY': X_OPENFIGI_APIKEY,
+    }
+
+    # Make the request
+    response = requests.post(url, headers=headers, json=payload)
+
+    # Extract ticker from response
+    if response.status_code == 200:
+        data = response.json()
+        if "data" in data[0]:
+            ticker = data[0]['data'][0]['ticker']
+            print("Ticker:", ticker)
+        else:
+            print(f"Data not available for isin:{isin}", response.content)
+
+    else:
+        print("Invalid request response: ", response.content)
+
+    return ticker

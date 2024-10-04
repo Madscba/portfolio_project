@@ -24,6 +24,10 @@ scrapy = "^2.11.2"
 bs4 = "^0.0.2"
 scrapy-selenium = "^0.0.7"
 openpyxl = "^3.1.5"
+investpy = "^1.0.8"
+tqdm = "^4.66.5"
+python-dotenv = "^1.0.1"
+yfinance = "^0.2.43"
 
 
 [tool.poetry.dev-dependencies]
